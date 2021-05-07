@@ -26,7 +26,7 @@ $numberButtons.forEach(function(number) {
 function pushOperator(event) {
   alert(event.target.textContent);
 }
-
+// multiple selectors- separate w/ commas
 const $operatorButtons = document.querySelectorAll(".operator, .clear");
 console.log($operatorButtons);
 $operatorButtons.forEach(function(operator) {
@@ -35,10 +35,36 @@ $operatorButtons.forEach(function(operator) {
 
 });
 
-// multiple classes []
+// function calculate =  class="equal-sign"
 
+function pushCalculate(event) {
+  alert(event.target.textContent);
+}
+// multiple selectors- separate w/ commas
+const $calculateButton = document.querySelectorAll(".equal-sign");
+console.log($calculateButton);
+$calculateButton.forEach(function(calculate) {
+  calculate.addEventListener('click', pushCalculate);
+});
 
+// $calculateButton.forEach(function(equals) {
+//
+//   equals.addEventListener('click', calculate);
+//
+// });
 
+// function pushNumber(event) {
+//   alert(event.target.textContent);
+// }
+//
+//
+// const $numberButtons = document.querySelectorAll(".number");
+// console.log($numberButtons);
+// $numberButtons.forEach(function(number) {
+//   // console.log(number);
+//   number.addEventListener('click', pushNumber);
+// //
+// });
 
 
 
