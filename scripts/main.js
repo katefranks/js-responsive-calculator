@@ -5,6 +5,7 @@
 // const equalButton = document.querySelector('.equal-sign');
 // const equalButton = document.querySelector('.equal-sign');
 
+var calculation = [];
 
 function pushNumber(event) {
   alert(event.target.textContent);
@@ -12,11 +13,14 @@ function pushNumber(event) {
 
 
 const $numberButtons = document.querySelectorAll(".number");
-console.log($numberButtons);
+// console.log($numberButtons);
 $numberButtons.forEach(function(number) {
   // console.log(number);
-  number.addEventListener('click', pushNumber);
-//
+  number.addEventListener('click', function pushNumber(){
+    calculation.push(this.value);
+    console.log(calculation);
+
+})
 });
 
 // **********AFTER LUNCH**********
@@ -28,28 +32,39 @@ function pushOperator(event) {
 }
 // multiple selectors- separate w/ commas
 const $operatorButtons = document.querySelectorAll(".operator, .clear");
-console.log($operatorButtons);
+// console.log($operatorButtons);
 $operatorButtons.forEach(function(operator) {
 
-  operator.addEventListener('click', pushOperator);
+  operator.addEventListener('click', function pushOperator(){
+    calculation.push(this.value);
+    console.log(calculation);
+  });
 
 });
 
-// function calculate =  class="equal-sign"
+//**step 3 function calculate =  class="equal-sign"
 
 function pushCalculate(event) {
   alert(event.target.textContent);
 }
 // multiple selectors- separate w/ commas
 const $calculateButton = document.querySelectorAll(".equal-sign");
-console.log($calculateButton);
+// console.log($calculateButton);
 $calculateButton.forEach(function(calculate) {
   calculate.addEventListener('click', pushCalculate);
 });
 
-// step 4: define a variable 'calculation' pointing to empty array
+// **step 4: define a variable 'calculation' pointing to empty array
 
-const calculation = [];
+
+// calculation = calculation.push(this.value);
+
+// calculation.push(event.target.textContent);
+// (this.value)
+// **step 5: Using `Array.prototype.push`, perform actions on the `calculation` variable
+// when numbers and operators are pressed
+
+
 
 // $calculateButton.forEach(function(equals) {
 //
