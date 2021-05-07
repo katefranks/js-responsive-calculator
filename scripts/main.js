@@ -9,17 +9,70 @@
 function pushNumber(event) {
   alert(event.target.textContent);
 }
-// alert();
 
-const $button = document.querySelector(".calculator-keys");
-$button.addEventListener('click', pushNumber);
+// ***the following makes all the buttons alert
+const $numberButtons = document.querySelectorAll(".number");
+console.log($numberButtons);
+$numberButtons.forEach(function(number) {
+  // console.log(number);
+  number.addEventListener('click', pushNumber);
+
+});
 
 
 
 
-// <button type="button" class="number" value="4">4</button>
-// <button type="button" class="number" value="5">5</button>
-// <button type="button" class="number" value="6">6</button>
+
+
+
+
+// function demo(params) {
+//   console.log(params);
+// }
+//
+// demo('Hey');
+// demo('Hello');
+//
+
+  // for(let i=0; i < $numberButtons.length; i+=) {
+  //     console.log($numberButtons[i]);
+  // }
+
+
+
+// forEach($numberButtons);
+//   console.log($numberButtons);
+//
+
+
+// var myNodeList = document.querySelectorAll('li');
+// forEach($numberButtons, function (index, value) {
+//   console.log(index, value); // passes index + value back!
+// });
+
+// for(var i = 0; i < $numberButtons.length; i ++) {
+//   console.log($numberButtons);
+// }
+
+
+
+// console.log('button', $button);
+// $button.addEventListener('click', pushNumber);
+
+// node list for each
+
+
+// ***no alerts
+// const $button = document.querySelectorAll(".number");
+// $button.addEventListener('click', pushNumber);
+
+// ***only 7 alerts
+// const $button = document.querySelector(".number");
+// $button.addEventListener('click', pushNumber);
+
+
+
+
 
 // event.target.textContent.
 
