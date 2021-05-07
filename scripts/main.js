@@ -54,6 +54,36 @@ $calculateButton.forEach(function(calculate) {
   calculate.addEventListener('click', pushCalculate);
 });
 
+
+// ***step 6- loop
+// stopping point for Friday 5/7/21.
+// 5/8- try to get if/else to work properly!
+
+
+if (innerHTML.$operatorButtons == '+') {
+    calculation = number1 + number2;
+}
+else if (innerHTML.$operatorButtons == '-') {
+    calculation = number1 - number2;
+}
+else if (innerHTML.$operatorButtons == '*') {
+    calculation = number1 * number2;
+}
+else {
+    calculation = number1 / number2;
+}
+
+// display the result
+console.log(`${number1} ${operator} ${number2} = ${calculation}`);
+
+
+
+
+
+
+
+
+
 // **step 4: define a variable 'calculation' pointing to empty array
 
 
