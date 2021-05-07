@@ -10,16 +10,32 @@ function pushNumber(event) {
   alert(event.target.textContent);
 }
 
-// ***the following makes all the buttons alert
+
 const $numberButtons = document.querySelectorAll(".number");
 console.log($numberButtons);
 $numberButtons.forEach(function(number) {
   // console.log(number);
   number.addEventListener('click', pushNumber);
+//
+});
+
+// **********AFTER LUNCH**********
+// Create push operator function
+// (`+`, `-`, `*`, `/`, `C`)
+
+function pushOperator(event) {
+  alert(event.target.textContent);
+}
+
+const $operatorButtons = document.querySelectorAll(".operator, .clear");
+console.log($operatorButtons);
+$operatorButtons.forEach(function(operator) {
+
+  operator.addEventListener('click', pushOperator);
 
 });
 
-
+// multiple classes []
 
 
 
