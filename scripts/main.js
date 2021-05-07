@@ -47,6 +47,10 @@ $calculateButton.forEach(function(calculate) {
   calculate.addEventListener('click', pushCalculate);
 });
 
+// step 4: define a variable 'calculation' pointing to empty array
+
+const calculation = [];
+
 // $calculateButton.forEach(function(equals) {
 //
 //   equals.addEventListener('click', calculate);
