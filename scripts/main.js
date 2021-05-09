@@ -7,6 +7,10 @@
 
 var calculation = [];
 
+// for (var i=0; i < calculation.length; i++) {
+//   parseFloat(calculation[i]);
+// }
+
 function pushNumber(event) {
   alert(event.target.textContent);
 }
@@ -55,27 +59,35 @@ $calculateButton.forEach(function(calculate) {
 });
 
 
-
-// ***step 6- loop
-// stopping point for Friday 5/7/21.
-// 5/8- try to get if/else to work properly!
-
-
-// if (innerHTML.$operatorButtons == '+') {
-//     calculation = number1 + number2;
-// }
-// else if (innerHTML.$operatorButtons == '-') {
-//     calculation = number1 - number2;
-// }
-// else if (innerHTML.$operatorButtons == '*') {
-//     calculation = number1 * number2;
-// }
-// else {
-//     calculation = number1 / number2;
+// calculation =
+// for (var i=0; i < calculation.length; i++) {
+//   parseFloat(calculation[i]);
+//   console.log(calculation);
 // }
 
-// display the result
-console.log(`${number1} ${operator} ${number2} = ${calculation}`);
+
+
+var getSum
+
+if ($operatorButtons.innerHTML == '+') {
+    getSum = calculation[0] + calculation[1];
+
+}
+else if ($operatorButtons.innerHTML == '-') {
+    getSum = calculation[0] - calculation[1];
+
+}
+else if ($operatorButtons.innerHTML == '*') {
+    getSum = calculation[0] * calculation[1];
+
+}
+else {
+    getSum = calculation[0] / calculation[1];
+
+}
+console.log(getSum);
+
+// console.log(`${number1} ${operator} ${number2} = ${calculation}`);
 
 
 
