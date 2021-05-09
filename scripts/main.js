@@ -21,7 +21,7 @@ const $numberButtons = document.querySelectorAll(".number");
 $numberButtons.forEach(function(number) {
   // console.log(number);
   number.addEventListener('click', function pushNumber(){
-    calculation.push(this.value);
+    calculation.push(parseFloat(this.value));
     console.log(calculation);
 
 })
@@ -31,6 +31,13 @@ $numberButtons.forEach(function(number) {
 // Create push operator function
 // (`+`, `-`, `*`, `/`, `C`)
 
+// *****trying this set up instead*****
+// function pushOperator(event) {
+//   alert(event.target.value);
+//   calculation.push(parseInt(number));
+//   calculation.push(event.target.value);
+//   number = '';
+// ******original code******
 function pushOperator(event) {
   alert(event.target.textContent);
 }
@@ -45,6 +52,7 @@ $operatorButtons.forEach(function(operator) {
   });
 
 });
+// ******original code******
 
 //**step 3 function calculate =  class="equal-sign"
 
@@ -67,25 +75,25 @@ $calculateButton.forEach(function(calculate) {
 
 
 
-var getSum
-
-if ($operatorButtons.innerHTML == '+') {
-    getSum = calculation[0] + calculation[1];
-
-}
-else if ($operatorButtons.innerHTML == '-') {
-    getSum = calculation[0] - calculation[1];
-
-}
-else if ($operatorButtons.innerHTML == '*') {
-    getSum = calculation[0] * calculation[1];
-
-}
-else {
-    getSum = calculation[0] / calculation[1];
-
-}
-console.log(getSum);
+// var getSum
+//
+// if ($operatorButtons.innerHTML == '+') {
+//     getSum = calculation[0] + calculation[1];
+//
+// }
+// else if ($operatorButtons.innerHTML == '-') {
+//     getSum = calculation[0] - calculation[1];
+//
+// }
+// else if ($operatorButtons.innerHTML == '*') {
+//     getSum = calculation[0] * calculation[1];
+//
+// }
+// else {
+//     getSum = calculation[0] / calculation[1];
+//
+// }
+// console.log(getSum);
 
 // console.log(`${number1} ${operator} ${number2} = ${calculation}`);
 
