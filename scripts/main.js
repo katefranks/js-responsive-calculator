@@ -52,20 +52,27 @@ $operatorButtons.forEach(function(operator) {
   });
 
 });
-// ******original code******
+
+
+
 
 //**step 3 function calculate =  class="equal-sign"
-
+// ****may need to come back to this- original code.
 function pushCalculate(event) {
   alert(event.target.textContent);
 }
-// multiple selectors- separate w/ commas
+
 const $calculateButton = document.querySelectorAll(".equal-sign");
 // console.log($calculateButton);
 $calculateButton.forEach(function(calculate) {
-  calculate.addEventListener('click', pushCalculate);
+
+  calculate.addEventListener('click', function pushCalculate(){
+    calculation.push(this.value);
+    console.log(calculation);
+  });
 });
 
+// // multiple selectors- separate w/ commas
 
 // calculation =
 // for (var i=0; i < calculation.length; i++) {
@@ -75,27 +82,59 @@ $calculateButton.forEach(function(calculate) {
 
 
 
-// var getSum
-//
-// if ($operatorButtons.innerHTML == '+') {
-//     getSum = calculation[0] + calculation[1];
-//
-// }
-// else if ($operatorButtons.innerHTML == '-') {
-//     getSum = calculation[0] - calculation[1];
-//
-// }
-// else if ($operatorButtons.innerHTML == '*') {
-//     getSum = calculation[0] * calculation[1];
-//
-// }
-// else {
-//     getSum = calculation[0] / calculation[1];
-//
-// }
-// console.log(getSum);
+var total;
+var num1 = calculation[0];
+var num2 = calculation[1];
 
-// console.log(`${number1} ${operator} ${number2} = ${calculation}`);
+for (let i = 0; i < calculation.length; i++)
+if ($operatorButtons.innerHTML == '+') {
+    total = num1 + num2;
+    console.log(total);
+
+}
+else if ($operatorButtons.innerHTML == '-') {
+    total = num1 - num2;
+    console.log(total);
+}
+else if ($operatorButtons.innerHTML == '*') {
+    total = num1 * num2;
+    console.log(total);
+}
+else {
+    total = num1 / num2;
+    console.log(total);
+}
+
+
+// function calculate(event) {
+//   calculation.push(parseInt(number));
+//   calculation.push(event.target.value);
+//   var num1 = calculation[0];
+//   var num2 = calculation[2];
+//   console.log(calculation);
+//   for (let i = 0; i < calculation.length; i++)
+//      if (calculation[i] === '+') {
+//       res = num1 + ' + ' + num2 + ' = ' + (num1 + num2);
+//       console.log(res);
+//       alert(res);
+//       pushClear();
+//     } else if (calculation[i] === '-') {
+//       res = num1 + ' - ' + num2 + ' = ' + (num1 - num2);
+//       console.log(res);
+//       alert(res);
+//       pushClear();
+//     } else if (calculation[i] === '*') {
+//       res = num1 + ' * ' + num2 + ' = ' + (num1 * num2);
+//       console.log(res);
+//       alert(res);
+//       pushClear();
+//     } else if (calculation[i] === '/') {
+//       res = num1 + ' / ' + num2 + ' = ' + (num1 / num2);
+//       console.log(res);
+//       alert(res);
+//       pushClear();
+//     }
+//   }
 
 
 
