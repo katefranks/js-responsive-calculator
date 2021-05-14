@@ -1,13 +1,14 @@
 // Declaring buttons as variables so that they can be used later on.
 // Using querySelectorAll to take hold of all elements that match the selector class "operator". querySelector is used for the remaining elements as they are the only ones of each class.
-const $numberButtons = document.querySelectorAll(".number");
+
+const $numberButtons = document.querySelectorAll(".number"); //targeting buttons w/ a class of number. QueryselectorALL returns the node list. Can not add an event listener to a node list, need to loop over the list using "forEach"
 const $operatorButtons = document.querySelectorAll(".operator");
 const $calculateButton = document.querySelector(".equal-sign");
 const $clearButton = document.querySelector(".clear");
 const $plusMinus = document.querySelector(".plus-minus");
 const $percent = document.querySelector(".percent");
 const $decimal = document.querySelector(".decimal");
-// creating an empty array where values will be pushed
+// creating an empty array where values will be pushed using `Array.prototype.push` to perform actions on the `calculation` variable when numbers and operators are pressed.
 var calculation = [];
 // creating  an empty string, which will later be parseInt to turn into an integer.
 var total = '';
@@ -15,11 +16,13 @@ var total = '';
 // adding event listeners to listen for "clicks" and call a function.
 $numberButtons.forEach(function(button){
   button.addEventListener('click', pushNumber)
-});
+});  // if you put pushNumber() it would tell Js to run function, not do it when click happens.
+
 $operatorButtons.forEach(function(operator){
   operator.addEventListener('click', pushOperator);
-})
-$calculateButton.addEventListener('click', pushCalculate);
+}) //using forEach again b/c there's more than one, and you can't add an event listener to a node list.
+
+$calculateButton.addEventListener('click', calculate);
 $clearButton.addEventListener('click', pushClear);
 $plusMinus.addEventListener('click', pushPlusMinus);
 $percent.addEventListener('click', pushPercent);
@@ -27,23 +30,23 @@ $decimal.addEventListener('click', pushDecimal);
 
 
 
-// creating functions which send an alert of the value of the selected target.
+// pushnumber alerts the number associated with its event argument when called
+// value vs text content- text content is the human readable version. Typically target value, that way you can change the user's visual w/o having to go back and refactor something else.
 
 function pushNumber(event) {
   alert(event.target.value);
-  total = total.concat(event.target.value);
-  console.log(total);
+  calculation.push(event.target.value);
+  console.log(calculation);
 }
-// concatenating values of numbers to string total.
+
 
 function pushOperator(event) {
   alert(event.target.value);
-  calculation.push(parseInt(total));
   calculation.push(event.target.value);
   total = '';
   console.log(calculation);
 }
-// parseInt used to change values from strings to actual values/integers
+
 function pushClear(event) {
   alert('Screen Cleared');
   calculation = [];
@@ -53,56 +56,77 @@ function pushClear(event) {
 function pushPlusMinus(event){
   alert(event.target.value);
   calculation.push(event.target.value);
+  console.log(calculation);
 }
 
 function pushPercent(event){
   alert(event.target.value);
   calculation.push(event.target.value);
+  console.log(calculation);
 }
 
 function pushDecimal(event){
   alert(event.target.value);
   calculation.push(event.target.value);
+  console.log(calculation);
 }
 
-// function to run calculation.
 
-function pushCalculate(event){
-  calculation.push(parseInt(total));
-  calculation.push(event.target.value);
+////////////////////////////////////////////////////////////////
+// for loop, giving back num1, num2, and the operator.
 
-// adding values to the previously created empty array calculation
-  var number1 = calculation[0];
-  var number2 = calculation[2];
+function calculate() {
+  alert('=');
 
-  console.log(calculation);
-  for (let i = 0; i < calculation.length; i++)
-  if (calculation[i] === '+') {
-      result = number1 + ' + ' + number2 + ' = ' + (number1 + number2);
-      console.log(result);
-      alert(result);
-  }else if (calculation[i] === '-') {
-      result = number1 + ' - ' + number2 + ' = ' + (number1 - number2);
-      console.log(result);
-      alert(result);
-  } else if (calculation[i] === '*') {
-      result = number1 + ' * ' + number2 + ' = ' + (number1 * number2);
-      console.log(result);
-      alert(result);
-  } else if (calculation[i] === '/') {
-      result = number1 + ' * ' + number2 + ' = ' + (number1 / number2);
-      console.log(result);
-      alert(result);
+calculation.push(parseInt(total));
+calculation.push(event.target.value);
+
+let num1 ='', num2 = '', operator = null;
+let operators = ['*', '/', '+', '-']
+
+for(let i=0; i < calculation.length; i++) {
+  const char = calculation[i];
+
+  if (operators.includes(char)) {
+    operator = char;
+  } else if (!operator) {
+    num1 += char;
+  } else {
+    num2 += char;
   }
 }
+num1= parseFloat(num1);
+num2 = parseFloat(num2);
+console.log(num1, num2)
 
-// Initializing i = 0, setting condition to run loop so long as i is less than the length of the array calculation, incrememnting i by 1 each loop. Lots of research/ trial & error got this to calculate, but I still have some questions on the this.
+if(operator === '+') {
+  // return num1 + num2;
+   alert(num1 + num2);
+   console.log(num1 + num2);
+} else if (operator === '-') {
+  // return num1 - num2;
+  alert(num1 - num2);
+  console.log(num1 - num2);
+} else if (operator === '*') {
+  // return num1 * num2;
+  alert(num1 * num2);
+  console.log(num1 * num2);
+}else if (operator === '/') {
+  // return num1 / num2;
+  alert(num1 / num2);
+  console.log(num1 / num2);
+}
+
+}
+
+
+
 
 
 
 
 //////////////////////////////////////////////////////////////////
-////////     Re-organizing the below code!  /////////////////////
+////////  Section below is previous attempts & notes   ///////////
 /////////////////////////////////////////////////////////////////
 
 // var calculation = [];
@@ -127,7 +151,7 @@ function pushCalculate(event){
 // })
 // });
 //
-// // **********AFTER LUNCH**********
+// // ********************
 // // Create push operator function
 // // (`+`, `-`, `*`, `/`, `C`)
 //
