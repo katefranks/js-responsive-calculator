@@ -11,6 +11,7 @@ html {
 
 .calculator {
   border: 1px solid #1E1E1E;
+  box-shadow: 3px 3px 3px #1e1e1e;
   border-radius: 5px;
   position: absolute;
   top: 50%;
@@ -24,6 +25,7 @@ html {
   font-size: 5rem;
   height: 80px;
   border: none;
+  box-shadow: 3px 3px 3px #1e1e1e;
   background-color: #5D5A58;
   color: #fff;
   text-align: right;
@@ -54,8 +56,14 @@ button:focus {
 .calculator-keys {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+
 }
 
 .btn-lg {
   grid-column: 1 / 3;
+}
+
+button:active{
+  box-shadow: 2px 2px 2px black;
+  z-index: 2;
 }
