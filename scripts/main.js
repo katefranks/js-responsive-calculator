@@ -8,19 +8,21 @@ const $clearButton = document.querySelector(".clear");
 const $plusMinus = document.querySelector(".plus-minus");
 const $percent = document.querySelector(".percent");
 const $decimal = document.querySelector(".decimal");
-// creating an empty array where values will be pushed using `Array.prototype.push` to perform actions on the `calculation` variable when numbers and operators are pressed.
+let $calcTotal = document.querySelector(".calculator-screen");
+// creating an empty array where values will be pushed using `Array.push()` to perform actions on the `calculation` variable when numbers and operators are pressed.
 var calculation = [];
 // creating  an empty string, which will later be parseInt to turn into an integer.
 var total = '';
 
-// adding event listeners to listen for "clicks" and call a function.
-$numberButtons.forEach(function(button){
+// adding event listeners to listen for "click" and call a function.
+$numberButtons.forEach(function(button) {
   button.addEventListener('click', pushNumber)
-});  // if you put pushNumber() it would tell Js to run function, not do it when click happens.
+});
 
-$operatorButtons.forEach(function(operator){
+$operatorButtons.forEach(function(operator) {
   operator.addEventListener('click', pushOperator);
-}) //using forEach again b/c there's more than one, and you can't add an event listener to a node list.
+});
+
 
 $calculateButton.addEventListener('click', calculate);
 $clearButton.addEventListener('click', pushClear);
@@ -34,17 +36,18 @@ $decimal.addEventListener('click', pushDecimal);
 // value vs text content- text content is the human readable version. Typically target value, that way you can change the user's visual w/o having to go back and refactor something else.
 
 function pushNumber(event) {
-  alert(event.target.value);
+  // alert(event.target.value); //target is the actual element
   calculation.push(event.target.value);
-  console.log(calculation);
+  $calcTotal.value = event.target.value;
 }
 
 
 function pushOperator(event) {
   alert(event.target.value);
   calculation.push(event.target.value);
+
   total = '';
-  console.log(calculation);
+  $calcTotal.value = event.target.value;
 }
 
 function pushClear(event) {
@@ -53,19 +56,19 @@ function pushClear(event) {
   total = '';
 }
 
-function pushPlusMinus(event){
+function pushPlusMinus(event) {
   alert(event.target.value);
   calculation.push(event.target.value);
   console.log(calculation);
 }
 
-function pushPercent(event){
+function pushPercent(event) {
   alert(event.target.value);
   calculation.push(event.target.value);
   console.log(calculation);
 }
 
-function pushDecimal(event){
+function pushDecimal(event) {
   alert(event.target.value);
   calculation.push(event.target.value);
   console.log(calculation);
@@ -78,45 +81,54 @@ function pushDecimal(event){
 function calculate() {
   alert('=');
 
-calculation.push(parseInt(total));
-calculation.push(event.target.value);
+  calculation.push(parseInt(total));
+  calculation.push(event.target.value);
 
-let num1 ='', num2 = '', operator = null;
-let operators = ['*', '/', '+', '-']
+  let num1 = '', num2 = '', operator = null, totalValue = 0;
+  let operators = ['*', '/', '+', '-']
 
-for(let i=0; i < calculation.length; i++) {
-  const char = calculation[i];
+  console.log('calc', calculation);
 
-  if (operators.includes(char)) {
-    operator = char;
-  } else if (!operator) {
-    num1 += char;
-  } else {
-    num2 += char;
+
+  for (let i = 0; i < calculation.length; i++) {
+    const char = calculation[i]; //value at that index in the calculation array.
+
+
+    if (operators.includes(char)) {
+      operator = char;
+    } else if (operator == null) { //if not an operator, and operator hasn't been set, then num1 = char
+      num1 += char;
+
+    } else {
+      num2 += char; //if not an operator, and operator has been set, then num2 = char
+    }
   }
-}
-num1= parseFloat(num1);
-num2 = parseFloat(num2);
-console.log(num1, num2)
+  //converting value of num1 & num2 from string to #
+  num1 = parseFloat(num1);
+  num2 = parseFloat(num2);
 
-if(operator === '+') {
-  // return num1 + num2;
-   alert(num1 + num2);
-   console.log(num1 + num2);
-} else if (operator === '-') {
-  // return num1 - num2;
-  alert(num1 - num2);
-  console.log(num1 - num2);
-} else if (operator === '*') {
-  // return num1 * num2;
-  alert(num1 * num2);
-  console.log(num1 * num2);
-}else if (operator === '/') {
-  // return num1 / num2;
-  alert(num1 / num2);
-  console.log(num1 / num2);
-}
-
+  //operator is still a string, no way to convert that, so explaining what to return.
+  if (operator === '+') {
+    // return num1 + num2;
+    alert(num1 + num2);
+    totalValue = num1 + num2;
+  } else if (operator === '-') {
+    // return num1 - num2;
+    alert(num1 - num2);
+    console.log(num1 - num2);
+    totalValue = num1 - num2;
+  } else if (operator === '*') {
+    // return num1 * num2;
+    alert(num1 * num2);
+    console.log(num1 * num2);
+    totalValue = num1 * num2;
+  } else if (operator === '/') {
+    // return num1 / num2;
+    alert(num1 / num2);
+    console.log(num1 / num2);
+    totalValue = num1 / num2;
+  }
+    $calcTotal.value = totalValue;
 }
 
 
